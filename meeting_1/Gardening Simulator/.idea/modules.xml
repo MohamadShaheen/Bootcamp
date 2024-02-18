@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/Gardening Simulator.iml" filepath="$PROJECT_DIR$/.idea/Gardening Simulator.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/Gradening Simulator.iml" filepath="$PROJECT_DIR$/.idea/Gradening Simulator.iml" />
+>>>>>>> 7f6bfdd0533fe3eb159b67e9d9c2ca66a2493800
     </modules>
   </component>
 </project>
