@@ -49,8 +49,11 @@ def main():
 
             # Check if the specific id didn't vote before
             if not (vote_id in votes.keys()):
+                # Add the voter details to the voters list
                 voters.append([voter_name, voter_age, voter_address])
+                # Add the vote details to the votes list
                 votes[vote_id] = vote_candidate
+                # Add the voter and vote details to the queue
                 q.put([voters[-1], vote_id, vote_candidate])
             # Detect an imposter
             else:
