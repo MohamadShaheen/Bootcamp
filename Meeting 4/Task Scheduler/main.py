@@ -1,79 +1,90 @@
+class Task:
+    def __init__(self, name, day, duration, starting_hour, ending_hour):
+        self.name = name
+        self.day = day
+        self.duration = duration
+        self.starting_hour = starting_hour
+        self.ending_hour = ending_hour
+
+
 def main():
-
-    class Task:
-        def __init__(self, name, duration, task_starting_hour, task_ending_hour):
-            self.name = name
-            self.duration = duration
-            self.task_starting_hour = task_starting_hour
-            self.task_ending_hour = task_ending_hour
-
-    def get_valid_input(input_text, error_text):
-        while True:
-            try:
-                value = int(input(input_text))
-                break
-            except ValueError:
-                print(error_text)
-
-        return value
-
     tasks = []
+    hours_list = [[None] * 8 for _ in range(5)]
     end_of_tasks = 0
 
-    print(f'\nWorking hours are from 8:00 - 16:00.')
+    print('''
+    Instructions:
 
-    print(f'\nLegend: \n'
-          f'1: Sunday.\n'
-          f'2: Monday.\n'
-          f'3: Tuesday.\n'
-          f'4: Wednesday.\n'
-          f'5: Thursday.')
+    Enter -1 to end the tasks selection
+    Enter -1 to refrain from picking a day
+    Enter -1 to refrain from picking starting hour
+    Enter -1 to refrain from picking ending hour
+
+    Days must be between 1 and 5
+    Hours must be between 8 and 16
+    Duration must be synchronized with the starting and ending hours
+    ''')
 
     while end_of_tasks != -1:
-        task_name = input("\nEnter task name: ")
+        name = input("Enter task name: ")
+        day = int(input("Enter task day: "))
+        duration = int(input("Enter task duration: "))
+        starting_hour = int(input("Enter task starting hour: "))
+        ending_hour = int(input("Enter task ending hour: "))
 
-        task_duration = get_valid_input("Enter task duration (in hours): ", "Invalid task duration")
-        while not (0 < task_duration <= 8):
-            task_duration = get_valid_input("Enter task duration (in hours): ", "Invalid task duration")
+        # day is from 1 to 5
+        # hours are from 8 to 16
+        # duration is maximum 8 and minimum 0
 
-        task_day = get_valid_input("Enter task day (Refer to the Legend): ", "Invalid task day")
-        while not (1 <= task_day <= 5):
-            task_day = get_valid_input("Enter task day (Refer to the Legend): ", "Invalid task day")
+        if day == -1:
+            if starting_hour == -1:
+                flag = False
+                for index in hours_list:
+                    for i in range(8):
+                        if i + duration > len(index):
+                            break
+                        if index[i:i + duration] == [None] * duration:
+                            index[i:i + duration] = [1] * duration
+                            tasks.append(Task(name, day, duration, starting_hour, ending_hour))
+                            flag = True
+                            break
 
-        print('Please enter -1 if you don\'t want to specify starting and ending hour')
+                    if flag:
+                        break
+            else:
+                for index in hours_list:
+                    if index[starting_hour - 8:ending_hour - 8] == [None] * duration:
+                        index[starting_hour - 8:ending_hour - 8] = [1] * duration
+                        tasks.append(Task(name, day, duration, starting_hour, ending_hour))
+                        break
 
-        task_starting_hour = get_valid_input("Enter task starting hour (24 hour format): ",
-                                             "Invalid task starting hour")
-        if task_starting_hour != -1:
-            while not (8 <= task_starting_hour <= 16):
-                task_starting_hour = get_valid_input("Enter task starting hour (24 hour format): ",
-                                                     "Invalid task starting hour")
+                    else:
+                        print('This time range isn\'t available')
 
-            task_ending_hour = get_valid_input("Enter task ending hour (24 hour format): ", "Invalid task ending hour")
-            while not (8 <= task_ending_hour <= 16):
-                task_ending_hour = get_valid_input("Enter task ending hour (24 hour format): ", "Invalid task ending hour")
+        else:
+            if starting_hour == -1:
+                for i in range(8):
+                    if i + duration > 8:
+                        break
+                    if hours_list[day - 1][i:i + duration] == [None] * duration:
+                        hours_list[day - 1][i:i + duration] = [1] * duration
+                        tasks.append(Task(name, day, duration, starting_hour, ending_hour))
+                        break
+                    else:
+                        print('This time range isn\'t available')
+            else:
+                if hours_list[day - 1][starting_hour - 8:ending_hour - 8] == [None] * duration:
+                    hours_list[day - 1][starting_hour - 8:ending_hour - 8] = [1] * duration
+                    tasks.append(Task(name, day, duration, starting_hour, ending_hour))
+                else:
+                    print('This time range isn\'t available')
 
-            while task_ending_hour - task_starting_hour != task_duration:
-                task_starting_hour = get_valid_input("Enter task starting hour (24 hour format): ", "Invalid task starting hour")
-                task_ending_hour = get_valid_input("Enter task ending hour (24 hour format): ", "Invalid task ending hour")
-
+        print()
         for task in tasks:
-            if task.day == task_day:
-                if task.task_starting_hour == task_starting_hour and task.task_ending_hour == task_ending_hour:
-                    print(f'Task {task_name} is scheduled in this time range.')
-                    print(f'If you would like to replace the task please reply by 1 and else reply by 0')
-                    replace_task_flag = get_valid_input("Replace the task? ", "Invalid answer.")
+            print(f'name: {task.name}.')
+        print(f'{hours_list}\n')
 
-                    while not (0 <= replace_task_flag <= 1):
-                        replace_task_flag = get_valid_input("Replace the task? ", "Invalid answer.")
-
-                    if replace_task_flag == 1:
-                        task.name = task_name
-
-            # else:
-            #     if task_starting_hour == -1:
-            #         for task in tasks:
-            #
+        end_of_tasks = int(input('End tasks? '))
 
 
 if __name__ == '__main__':
