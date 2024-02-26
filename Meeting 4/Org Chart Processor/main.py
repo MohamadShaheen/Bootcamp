@@ -8,7 +8,6 @@ def iterate_org_chart(org_chart):
             iterate_org_chart(subordinate)
 
 
-# Load JSON data from file
 with open("companies.json", "r") as file:
     data = json.load(file)
 
