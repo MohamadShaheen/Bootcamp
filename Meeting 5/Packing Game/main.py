@@ -2,7 +2,7 @@ class Item:
     def __init__(self, weight):
         self.weight = weight
 
-
+### good sub classes! good naming
 class ColoredItem(Item):
     def __init__(self, weight, color):
         super().__init__(weight)
@@ -84,7 +84,10 @@ class Campus(ElectronicItem):
 class Bag:
     def __init__(self):
         self.items = []
-
+    ### why fill the bad initialy at all?
+    ### if you dont do it, no need for the add_item method
+    ### plus, can refactor and use one function for all item addion, just add another param 'limited'/'free'
+    
     def add_item(self, item):
         self.items.append(item)
 
@@ -117,23 +120,27 @@ class Bag:
 
         print('\nSneakers')
         for i, item in enumerate(self.items):
+            ### dry
             if isinstance(item, Sneakers):
                 print(f'{i + 1} - {item.__class__.__name__} {item.__dict__}')
 
         print('\nElectronic Items')
         for i, item in enumerate(self.items):
+            ### dry
             if isinstance(item, ElectronicItem):
                 print(f'{i + 1} - {item.__class__.__name__} {item.__dict__}')
 
     def print_one_category(self, category, item_type):
         print(f'\n{item_type}')
         for i, item in enumerate(self.items):
+            ### dry 
             if isinstance(item, category):
                 print(f'{i + 1} - {item.__class__.__name__} {item.__dict__}')
 
 
 def main():
     items = Bag()
+    ### why hardcoding?
     items.add_item(UniversalCharger('Black', 50, 'Medium', 'Lenovo', 12))
     items.add_item(Passport('Blue', 1, 50, 'USA'))
     items.add_item(SunGlasses(True, 'Black', 'Italy', 10))
@@ -195,6 +202,7 @@ def main():
     bag.print_by_category()
 
     print(f'\nLegend:\n\t1: Colored Items\n\t2: Sneakers\n\t3: Electronic Items\n\t-1: Finish\n')
+    ### not readable. what does the "true" means each time?
     while True:
         while True:
             try:
