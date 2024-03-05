@@ -4,7 +4,6 @@ import json
 from collections import Counter
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 
 
 def create_soup_instance(url):
