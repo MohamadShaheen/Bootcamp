@@ -4,6 +4,11 @@ import tkinter as tk
 
 class ConwayBoard:
     def __init__(self, height, width):
+        """
+        Initialize the game of life board with width and height
+        :param height: the height of the board
+        :param width: the width of the board
+        """
         self.height = height
         self.width = width
         self.board = np.zeros((height, width), dtype=int)
@@ -48,7 +53,7 @@ class ConwayBoard:
         for row, column in chosen_alive_cells:
             self.board[row][column] = 1
 
-    def get_alive_neighbors(self, cell_row, cell_column):
+    def _get_alive_neighbors(self, cell_row, cell_column):
         """
         Function to get the alive neighbors of the given cell
         :param cell_row: the given cell row in the board
