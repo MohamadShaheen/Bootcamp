@@ -16,7 +16,7 @@ Game of Life/
 │   └── main.py                  # Main script for displaying the game board
 │
 ├── requirements.txt            # File listing project dependencies
-├── Makefile                    # Makefile for automating tasks like setup, testing, etc.
+├── Makefile                    # Makefile for automating tasks like setup, running, etc.
 └── README.md                   # Documentation for the project
 
 ```
