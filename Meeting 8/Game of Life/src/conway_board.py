@@ -35,15 +35,21 @@ class ConwayBoard:
 
     def update_board(self):
         """
-        Function to update the board with new values
+        Function to update the board with new values and to print logs accordingly
         """
+        print("Current board state:")
         for i in range(self.height):
+            row_string = ''
             for j in range(self.width):
                 cell_label = self.frame.grid_slaves(row=i, column=j)[0]
                 if self.board[i][j] == 1:
+                    row_string += 'X\t'
                     cell_label.config(bg='black')
                 else:
+                    row_string += '- \t'
                     cell_label.config(bg='white')
+            print(row_string)
+        print()
 
     def create_board(self, chosen_alive_cells):
         """
@@ -90,7 +96,7 @@ class ConwayBoard:
             print(f'Round {i + 1}')
             for row in range(self.height):
                 for column in range(self.width):
-                    number_of_alive_neighbors = self.get_alive_neighbors(cell_row=row, cell_column=column)
+                    number_of_alive_neighbors = self._get_alive_neighbors(cell_row=row, cell_column=column)
 
                     if number_of_alive_neighbors < 2 or number_of_alive_neighbors > 3:
                         temp_board[row][column] = 0
