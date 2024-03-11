@@ -1,0 +1,22 @@
+{
+    "highway": {
+        "terrain_hardness": 1,
+        "mental_effect": 1,
+        "wheel_damage_effect": 0.5
+    },
+    "country road": {
+        "terrain_hardness": 2,
+        "mental_effect": -1,
+        "wheel_damage_effect": 1
+    },
+    "mountain path": {
+        "terrain_hardness": 3,
+        "mental_effect": -2,
+        "wheel_damage_effect": 1.5
+    },
+    "city streets": {
+        "terrain_hardness": 2,
+        "mental_effect": 0,
+        "wheel_damage_effect": 1
+    }
+}
