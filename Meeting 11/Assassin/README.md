@@ -11,8 +11,6 @@ This script serves as a basic implementation
 reminiscent of the mechanics found
 in the popular game `Among Us`.
 
-<br></br>
-
 # Directories
 
 ## data
@@ -20,8 +18,6 @@ The `data` directory houses a .JSON file containing information about places, we
 
 ## games
 Within the `games` directory resides a class responsible for simulating a complete game.
-
-<br>
 
 # Classes and Their Functions
 
@@ -36,8 +32,6 @@ a full game.
 `_suspect_and_accuse`: Returns suspicious and accused players by a single player.
 `_simulate_round`: Simulates a single round and returns True if the assassin found, False otherwise.
 `simulate_game`: Simulates the entire game.
-
-<br>
 
 # Error Handling and Points of Failure
 
