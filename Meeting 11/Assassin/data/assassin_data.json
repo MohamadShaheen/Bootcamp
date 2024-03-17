@@ -1,0 +1,50 @@
+{
+  "places": [
+    "Cafe",
+    "Library",
+    "Park",
+    "Hospital",
+    "Bank",
+    "Hotel",
+    "Museum",
+    "Beach",
+    "Restaurant",
+    "Airport",
+    "School",
+    "Cinema",
+    "Shopping Mall",
+    "Gym",
+    "Office Building",
+    "Amusement Park",
+    "Zoo",
+    "Train Station",
+    "Stadium",
+    "Mountain"
+  ],
+
+  "weapons": [
+    "Knife",
+    "Poison",
+    "Gun",
+    "Garrote",
+    "Crossbow",
+    "Explosive",
+    "Strangle Wire",
+    "Dagger",
+    "Sniper Rifle",
+    "Syringe"
+  ],
+
+  "names": [
+    "Elena Johnson",
+    "Marcus Lee",
+    "Sophia Patel",
+    "David Garcia",
+    "Isabella Wang",
+    "Liam Rodriguez",
+    "Olivia Smith",
+    "Noah Kim",
+    "Ava Nguyen",
+    "Michael Brown"
+  ]
+}
