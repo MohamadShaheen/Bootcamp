@@ -28,9 +28,13 @@ a full game.
 ### Functions
 
 `_generate_round_data`: Generates the data for a single round and returns it.
+
 `_generate_murdered_person`: Generates the murdered person and returns it.
+
 `_suspect_and_accuse`: Returns suspicious and accused players by a single player.
+
 `_simulate_round`: Simulates a single round and returns True if the assassin found, False otherwise.
+
 `simulate_game`: Simulates the entire game.
 
 # Error Handling and Points of Failure
