@@ -11,7 +11,7 @@ This script serves as a basic implementation
 reminiscent of the mechanics found
 in the popular game `Among Us`.
 
-<br>
+<br></br>
 
 # Directories
 
