@@ -1,0 +1,25 @@
+The search results using naive search
+
+Word [extraordinary] appeared 1 times in the text. Time taken to find it is 5.379997310228646e-05.
+Word [such] appeared 5 times in the text. Time taken to find it is 4.119999357499182e-05.
+Word [about] appeared 1 times in the text. Time taken to find it is 3.7299992982298136e-05.
+Word [and] appeared 18 times in the text. Time taken to find it is 3.0499999411404133e-05.
+Word [or] appeared 5 times in the text. Time taken to find it is 6.299998494796455e-05.
+Word [a] appeared 20 times in the text. Time taken to find it is 2.2199994418770075e-05.
+Word [thousand] appeared 2 times in the text. Time taken to find it is 2.2899999748915434e-05.
+Word ["But] appeared 3 times in the text. Time taken to find it is 2.4599983589723706e-05.
+Word [are] appeared 8 times in the text. Time taken to find it is 2.5599991204217076e-05.
+Word [he] appeared 10 times in the text. Time taken to find it is 2.4500011932104826e-05.
+
+The search results using dictionary search
+
+Word [extraordinary] appeared 1 times in the text. Time taken to find it is 0.00018309999722987413.
+Word [such] appeared 5 times in the text. Time taken to find it is 8.00006091594696e-07.
+Word [about] appeared 1 times in the text. Time taken to find it is 3.00002284348011e-07.
+Word [and] appeared 18 times in the text. Time taken to find it is 3.00002284348011e-07.
+Word [or] appeared 5 times in the text. Time taken to find it is 3.00002284348011e-07.
+Word [a] appeared 20 times in the text. Time taken to find it is 4.00003045797348e-07.
+Word [thousand] appeared 2 times in the text. Time taken to find it is 2.00001522898674e-07.
+Word ["But] appeared 3 times in the text. Time taken to find it is 3.00002284348011e-07.
+Word [are] appeared 8 times in the text. Time taken to find it is 2.00001522898674e-07.
+Word [he] appeared 10 times in the text. Time taken to find it is 3.00002284348011e-07.

@@ -1,0 +1,25 @@
+The search results using linear search
+
+Number 0 found at [0]. Time taken to find it is 3.4999975468963385e-06.
+Number 1000 found at [1000]. Time taken to find it is 4.7900015488266945e-05.
+Number 2000 found at [2000]. Time taken to find it is 9.320001117885113e-05.
+Number 3000 found at [3000]. Time taken to find it is 0.0001404999929945916.
+Number 4000 found at [4000]. Time taken to find it is 0.00020810001296922565.
+Number 5000 found at [5000]. Time taken to find it is 0.0002925999870058149.
+Number 6000 found at [6000]. Time taken to find it is 0.0003167999966535717.
+Number 7000 found at [7000]. Time taken to find it is 0.00036470001214183867.
+Number 8000 found at [8000]. Time taken to find it is 0.00039629999082535505.
+Number 9000 found at [9000]. Time taken to find it is 0.00043390001519583166.
+
+The search results using binary search
+
+Number 0 found at [0]. Time taken to find it is 9.700015652924776e-06.
+Number 1000 found at [1000]. Time taken to find it is 4.6000059228390455e-06.
+Number 2000 found at [2000]. Time taken to find it is 2.7999922167509794e-06.
+Number 3000 found at [3000]. Time taken to find it is 3.00002284348011e-06.
+Number 4000 found at [4000]. Time taken to find it is 2.8999929782003164e-06.
+Number 5000 found at [5000]. Time taken to find it is 3.0999945010989904e-06.
+Number 6000 found at [6000]. Time taken to find it is 5.0000089686363935e-06.
+Number 7000 found at [7000]. Time taken to find it is 3.2999960239976645e-06.
+Number 8000 found at [8000]. Time taken to find it is 5.0000089686363935e-06.
+Number 9000 found at [9000]. Time taken to find it is 4.4000043999403715e-06.

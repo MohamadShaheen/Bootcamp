@@ -1,0 +1,23 @@
+The fibonacci series results using recursion
+
+Number at place [5] is 5. Time taken to find it is 4.9000082071870565e-06.
+Number at place [8] is 21. Time taken to find it is 5.2000104915350676e-06.
+Number at place [11] is 89. Time taken to find it is 1.9500002963468432e-05.
+Number at place [14] is 377. Time taken to find it is 8.229998638853431e-05.
+Number at place [17] is 1597. Time taken to find it is 0.00035600000410340726.
+Number at place [20] is 6765. Time taken to find it is 0.001519799989182502.
+Number at place [23] is 28657. Time taken to find it is 0.006402700004400685.
+Number at place [26] is 121393. Time taken to find it is 0.03229199998895638.
+Number at place [29] is 514229. Time taken to find it is 0.1273864999820944.
+
+The fibonacci series results using list for memorization
+
+Number at place [5] is 5. Time taken to find it is 8.69997893460095e-06.
+Number at place [8] is 21. Time taken to find it is 2.1999876480549574e-06.
+Number at place [11] is 89. Time taken to find it is 1.5999830793589354e-06.
+Number at place [14] is 377. Time taken to find it is 1.4999823179095984e-06.
+Number at place [17] is 1597. Time taken to find it is 2.500019036233425e-06.
+Number at place [20] is 6765. Time taken to find it is 2.2999884095042944e-06.
+Number at place [23] is 28657. Time taken to find it is 2.600019797682762e-06.
+Number at place [26] is 121393. Time taken to find it is 2.8999929782003164e-06.
+Number at place [29] is 514229. Time taken to find it is 2.8999929782003164e-06.
