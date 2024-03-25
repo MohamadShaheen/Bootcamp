@@ -24,24 +24,31 @@ def main():
     for username in usernames:
         social_media_platform.register_user(username)
 
-    for user in social_media_platform.users:
+    for user in social_media_platform.users.keys():
         users_to_follow = random.sample(usernames, 10)
         if user.username in users_to_follow:
             users_to_follow.remove(user.username)
 
-        print('\nFollow function time analysis\n')
         for user_to_follow in users_to_follow:
             result, time_taken = measure_time(user.follow, user_to_follow)
-            print(f'Time taken to execute follow function is {time_taken} seconds.')
 
-    for user in social_media_platform.users:
+    print('\nFollow function time analysis')
+    print(f'Time taken to execute follow function is {time_taken} seconds.')
+
+    for user in social_media_platform.users.keys():
         random_num_of_posts = random.randint(1, 10)
         for _ in range(random_num_of_posts):
-            user.post_message(fake.text())
+            result, time_taken = measure_time(user.post_message, fake.text())
 
-    for user in social_media_platform.users:
-        print(f'User: {user.username}')
-        social_media_platform.generate_timeline(user.username)
+    print('\nPost message function time analysis')
+    print(f'Time taken to execute post message function is {time_taken} seconds.')
+
+    for user in social_media_platform.users.keys():
+        # print(f'User: {user.username}')
+        result, time_taken = measure_time(social_media_platform.generate_timeline, user.username)
+
+    print('\nGenerate timeline function time analysis')
+    print(f'Time taken to execute generate timeline function is {time_taken} seconds.')
 
 
 if __name__ == '__main__':

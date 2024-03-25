@@ -1,0 +1,21 @@
+Results for old functions:
+
+Follow function time analysis
+Time taken to execute follow function is 4.00003045797348e-07 seconds.
+
+Post message function time analysis
+Time taken to execute post message function is 3.00002284348011e-07 seconds.
+
+Generate timeline function time analysis
+Time taken to execute generate timeline function is 0.00019450002582743764 seconds.
+
+Results for new functions:
+
+Follow function time analysis
+Time taken to execute follow function is 3.00002284348011e-07 seconds.
+
+Post message function time analysis
+Time taken to execute post message function is 5.00003807246685e-07 seconds.
+
+Generate timeline function time analysis
+Time taken to execute generate timeline function is 9.400013368576765e-06 seconds.

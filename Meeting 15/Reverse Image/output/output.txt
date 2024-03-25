@@ -1,0 +1,2 @@
+Total time taken using single thread is 63.73421439999947
+Total time taken using multi thread is 42.63974860002054
