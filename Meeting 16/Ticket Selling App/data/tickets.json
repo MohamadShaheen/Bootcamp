@@ -1,0 +1,22 @@
+{
+    "Concert": {
+        "ID": 18268,
+        "price": 20,
+        "sold": false
+    },
+    "Sports Game": {
+        "ID": 78365,
+        "price": 100,
+        "sold": false
+    },
+    "Theater Show": {
+        "ID": 53967,
+        "price": 40,
+        "sold": false
+    },
+    "Movie Premiere": {
+        "ID": 46749,
+        "price": 60,
+        "sold": false
+    }
+}
