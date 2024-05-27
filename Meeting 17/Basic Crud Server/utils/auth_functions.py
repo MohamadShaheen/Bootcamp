@@ -20,5 +20,4 @@ def verify_password(entered_password, hashed_password):
 
 
 def authenticate_new_user(id, password):
-    hashed_password = hash_password(password)
-    success =
+    pass
