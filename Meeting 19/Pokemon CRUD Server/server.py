@@ -1,4 +1,3 @@
-import uvicorn
 from fastapi import FastAPI
 from routers import pokemons_router, evolve_router, functions, trainers_router
 

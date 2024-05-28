@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
+from routers.functions import delete_trainer
 from database_connection.database import session_local
 from database_connection.models import Pokemon, Trainer, TrainerPokemon
-from routers.functions import delete_trainer
 
 router = APIRouter()
 
