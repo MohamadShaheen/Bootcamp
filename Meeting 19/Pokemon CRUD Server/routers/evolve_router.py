@@ -48,3 +48,5 @@ async def evolve_pokemon_of_trainer(pokemon_name: str, trainer_name: str):
         await add_pokemon_to_trainer(pokemon_name=evolved_pokemon, trainer_name=trainer_name)
     except HTTPException:
         pass
+
+    return f'Pokemon {evolved_pokemon} has been evolved for trainer {trainer_name}'
