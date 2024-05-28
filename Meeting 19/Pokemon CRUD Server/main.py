@@ -1,5 +1,5 @@
 import json
-from utils.api_operations import fetch_pokemon_types
+from utils.api_operations import get_pokemon_details
 from database_connection import create_database
 
 
@@ -8,7 +8,7 @@ def main():
         pokemon_data = json.load(file)
 
     for pokemon in pokemon_data:
-        correct_types = fetch_pokemon_types(pokemon['name'])
+        correct_types = get_pokemon_details(pokemon['name'])
         if correct_types:
             pokemon['types'] = correct_types
             if 'type' in pokemon:

@@ -1,11 +1,13 @@
 from fastapi import APIRouter, HTTPException
+from routers.functions import delete_pokemon
+from utils.api_operations import get_pokemon_details
 from database_connection.database import session_local
 from database_connection.models import Pokemon, Trainer, Type, TypePokemon, TrainerPokemon
 
 router = APIRouter()
 
 
-@router.get('/pokemon-details-by-id/{pokemon_id}')
+@router.get('/')
 async def get_pokemon_details_by_id(pokemon_id: int):
     session = session_local()
     db_pokemon = session.query(Pokemon).filter(Pokemon.id == pokemon_id).first()
@@ -19,7 +21,7 @@ async def get_pokemon_details_by_id(pokemon_id: int):
     return db_pokemon
 
 
-@router.get('/pokemon-details-by-name/{pokemon_name}')
+@router.get('/by-name/')
 async def get_pokemon_details_by_name(pokemon_name: str):
     session = session_local()
     db_pokemon = session.query(Pokemon).filter(Pokemon.name == pokemon_name).first()
@@ -33,7 +35,7 @@ async def get_pokemon_details_by_name(pokemon_name: str):
     return db_pokemon
 
 
-@router.get('/pokemons-by-type/{pokemon_type}')
+@router.get('/by-type/')
 async def get_pokemons_by_type(pokemon_type: str):
     session = session_local()
     db_type = session.query(Type).filter(Type.type == pokemon_type).first()
@@ -53,27 +55,7 @@ async def get_pokemons_by_type(pokemon_type: str):
     return pokemons
 
 
-@router.get('/pokemon-trainers/{pokemon_name}')
-async def get_pokemon_trainers(pokemon_name: str):
-    session = session_local()
-    db_pokemon = session.query(Pokemon).filter(Pokemon.name == pokemon_name).first()
-
-    if db_pokemon is None:
-        session.close()
-        raise HTTPException(status_code=404, detail='Pokemon not found')
-
-    db_trainers = session.query(TrainerPokemon).filter(TrainerPokemon.pokemon_id == db_pokemon.id).all()
-    trainers = []
-    for item in db_trainers:
-        db_trainer = session.query(Trainer).filter(Trainer.id == item.trainer.id).first()
-        trainers.append(db_trainer.name)
-
-    session.close()
-
-    return trainers
-
-
-@router.get('/pokemons-by-trainer/{trainer_name}')
+@router.get('/by-trainer/')
 async def get_pokemons_by_trainer(trainer_name: str):
     session = session_local()
     db_trainer = session.query(Trainer).filter(Trainer.name == trainer_name).first()
@@ -91,3 +73,48 @@ async def get_pokemons_by_trainer(trainer_name: str):
     session.close()
 
     return pokemons
+
+
+@router.post('/')
+async def add_new_pokemon(pokemon_name: str):
+    session = session_local()
+    db_pokemon = session.query(Pokemon).filter(Pokemon.name == pokemon_name).first()
+
+    if db_pokemon:
+        session.close()
+        raise HTTPException(status_code=409, detail='Pokemon already exists')
+
+    types, height, weight = get_pokemon_details(pokemon_name=pokemon_name)
+
+    if types is None or height is None or weight is None:
+        session.close()
+        raise HTTPException(status_code=400, detail='Failed to get pokemon details. No pokemon with the provided name exists')
+
+    db_pokemon = Pokemon(name=pokemon_name, height=height, weight=weight)
+    session.add(db_pokemon)
+    session.flush()
+
+    for type in types:
+        db_type = session.query(Type).filter(Type.type == type).first()
+        if db_type is None:
+            db_type = Type(type=type)
+            session.add(db_type)
+            session.flush()
+
+        db_type_pokemon = TypePokemon(type_id=db_type.id, pokemon_id=db_pokemon.id)
+        session.add(db_type_pokemon)
+        session.flush()
+
+    session.commit()
+    session.close()
+
+    return {'name': pokemon_name, 'height': height, 'weight': weight, 'types': types}
+
+
+@router.delete('/')
+async def delete_pokemon_by_name(pokemon_name: str):
+    session = session_local()
+    db_pokemon = session.query(Pokemon).filter(Pokemon.name == pokemon_name).first()
+    delete_pokemon(session, db_pokemon)
+
+    return f'Pokemon {pokemon_name} was deleted successfully'
