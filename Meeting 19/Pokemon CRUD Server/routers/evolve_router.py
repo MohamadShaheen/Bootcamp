@@ -49,4 +49,4 @@ async def evolve_pokemon_of_trainer(pokemon_name: str, trainer_name: str):
     except HTTPException:
         pass
 
-    return f'Pokemon {evolved_pokemon} has been evolved for trainer {trainer_name}'
+    return f'Pokemon {pokemon_name} has been evolved to {evolved_pokemon} for trainer {trainer_name}'
