@@ -1,8 +1,12 @@
+import os
 from fastapi import FastAPI
-from routers import pokemons_router, evolve_router, functions, trainers_router
+from dotenv import load_dotenv
+from routers import pokemons_router, evolve_router, trainers_router
 
-host = '127.0.0.1'
-port = 8000
+load_dotenv()
+
+host = os.getenv('SERVER_HOST')
+port = os.getenv('SERVER_PORT')
 
 app = FastAPI()
 
@@ -10,6 +14,7 @@ app = FastAPI()
 app.include_router(pokemons_router.router, prefix='/pokemons')
 app.include_router(trainers_router.router, prefix='/trainers')
 app.include_router(evolve_router.router, prefix='/evolve')
+
 
 @app.get('/')
 def root():

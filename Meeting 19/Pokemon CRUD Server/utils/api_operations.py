@@ -1,6 +1,10 @@
 import requests
+import json
 
-poke_api_URL = 'https://pokeapi.co/api/v2/pokemon'
+with open('config.json', 'r') as config_file:
+    config = json.load(config_file)
+
+poke_api_URL = config['poke_api_URL']
 
 
 def get_pokemon_details(pokemon_name):

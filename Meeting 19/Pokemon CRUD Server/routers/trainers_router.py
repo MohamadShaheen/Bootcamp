@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException
-from routers.functions import delete_trainer
 from database_connection.database import session_local
 from database_connection.models import Pokemon, Trainer, TrainerPokemon
 
@@ -103,6 +102,17 @@ async def create_trainer(trainer_name: str, trainer_town: str):
 async def delete_trainer_by_name(trainer_name: str):
     session = session_local()
     db_trainer = session.query(Trainer).filter(Trainer.name == trainer_name).first()
-    delete_trainer(session, db_trainer)
+
+    if db_trainer is None:
+        session.close()
+        raise HTTPException(status_code=404, detail='Trainer not found')
+
+    db_pokemons = session.query(TrainerPokemon).filter(TrainerPokemon.trainer_id == db_trainer.id).all()
+    for db_pokemon in db_pokemons:
+        session.delete(db_pokemon)
+
+    session.delete(db_trainer)
+    session.commit()
+    session.close()
 
     return f'Trainer {trainer_name} was deleted successfully'

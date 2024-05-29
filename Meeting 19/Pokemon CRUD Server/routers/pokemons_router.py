@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException
-from routers.functions import delete_pokemon
 from utils.api_operations import get_pokemon_details
 from database_connection.database import session_local
 from database_connection.models import Pokemon, Trainer, Type, TypePokemon, TrainerPokemon
@@ -115,6 +114,21 @@ async def add_new_pokemon(pokemon_name: str):
 async def delete_pokemon_by_name(pokemon_name: str):
     session = session_local()
     db_pokemon = session.query(Pokemon).filter(Pokemon.name == pokemon_name).first()
-    delete_pokemon(session, db_pokemon)
+
+    if db_pokemon is None:
+        session.close()
+        raise HTTPException(status_code=404, detail='Pokemon not found')
+
+    db_types = session.query(TypePokemon).filter(TypePokemon.pokemon_id == db_pokemon.id).all()
+    for db_type in db_types:
+        session.delete(db_type)
+
+    db_trainers = session.query(TrainerPokemon).filter(TrainerPokemon.pokemon_id == db_pokemon.id).all()
+    for db_trainer in db_trainers:
+        session.delete(db_trainer)
+
+    session.delete(db_pokemon)
+    session.commit()
+    session.close()
 
     return f'Pokemon {pokemon_name} was deleted successfully'
