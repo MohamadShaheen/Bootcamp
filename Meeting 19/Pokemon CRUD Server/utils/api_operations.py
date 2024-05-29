@@ -1,14 +1,20 @@
 import requests
 import json
 
-with open('config.json', 'r') as config_file:
-    config = json.load(config_file)
 
-poke_api_URL = config['poke_api_URL']
+def get_url():
+    try:
+        with open('../config.json', 'r') as config_file:
+            config = json.load(config_file)
+    except FileNotFoundError:
+        with open('config.json', 'r') as config_file:
+            config = json.load(config_file)
+
+    return config['poke_api_URL']
 
 
 def get_pokemon_details(pokemon_name):
-    response = requests.get(f'{poke_api_URL}/{pokemon_name.lower()}')
+    response = requests.get(f'{get_url()}/{pokemon_name.lower()}')
     if response.status_code == 200:
         data = response.json()
         types = [type_info['type']['name'] for type_info in data['types']]
@@ -20,7 +26,7 @@ def get_pokemon_details(pokemon_name):
 
 
 def get_species_url(pokemon_name):
-    response = requests.get(f'{poke_api_URL}/{pokemon_name.lower()}')
+    response = requests.get(f'{get_url()}/{pokemon_name.lower()}')
     if response.status_code == 200:
         data = response.json()
         species_url = data['species']['url']
